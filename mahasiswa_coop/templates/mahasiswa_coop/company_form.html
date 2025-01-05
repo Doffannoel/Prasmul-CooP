@@ -1,0 +1,38 @@
+{% extends 'base2.html' %}
+
+{% block title %}Company Form{% endblock %}
+
+{% block content %}
+<link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"
+/>
+
+<div class="form-header company-form">
+    <h1 class="form-title">Data Perusahaan</h1>
+    <p class="form-description">
+        Tolong isi form di bawah ini dengan data perusahaan Anda yang diperlukan untuk keperluan program Cooperative Education.
+    </p>
+
+    <form method="post" class="company-form__form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="company-form__submit-btn">Submit</button>
+    </form>
+
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <script>alert("{{ message }}");</script>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if success %}
+    <script>
+        alert("Data berhasil dikirim!");
+        window.location.href = "{% url 'student_dashboard' %}";  // Redirect ke halaman dashboard
+    </script>
+    {% endif %}
+</div>
+
+{% endblock %}

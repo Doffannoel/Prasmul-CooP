@@ -1,0 +1,449 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- LINK GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- AOS Animation -->
+    <link
+      rel="stylesheet"
+      href="{% static 'assets/vendor/aos/dist/aos.css' %}"
+    />
+
+    <link rel="stylesheet" href="{% static '/css/index.css' %}" />
+    <title>Prasmul Co-OP</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha384-oZ2q5p/H3utkJwEjZwN/7UXLzNT1dp2g8F8PJe9UceW4MyRM8QVswzB2roX1sFnV"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- HEADER START -->
+    <header>
+      <img
+        src="{% static '/images/LOGO Prasmul.png' %}"
+        alt="Logo Prasmul"
+        class="logo-prasmul"
+      />
+      <nav class="Navbar">
+        <ul class="Navigasi">
+          <li><a class="NavLink" href="#home">Home</a></li>
+          <li><a class="NavLink" href="#about">About</a></li>
+          <li><a class="NavLink" href="#features">Features</a></li>
+          <li><a class="NavLink" href="#faq">FAQ</a></li>
+          <li><a class="NavLink" href="#contactus">Contact Us</a></li>
+          <li>
+            <a class="NavLink call-to-action" href="{% url 'login' %}">Login</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- HEADER END -->
+
+    <!-- HERO START -->
+    <section class="SectionHero" id="home">
+      <div class="hero">
+        <div class="HeroText">
+          <h1 class="Heading-1">
+            Manage your internship <br />with <span>Prasmul Co-OP</span>
+          </h1>
+          <p class="DeskripsiAtas">
+            Managing Industrial Learning through Structured Internship
+          </p>
+          <a
+            href="{% url 'login' %}"
+            class="tombol tombol--start margin-right-sm"
+            >Get Started
+          </a>
+          
+        </div>
+        <div class="HeroGambar-Box">
+          <img
+            src="{% static 'images/Gambar Hero.jpg' %}"
+            class="HeroGambar"
+            alt="ini Gambar"
+          />
+        </div>
+      </div>
+    </section>
+    <!-- HERO END -->
+    <!-- AS FEATURED IN START -->
+    <section class="Featured-in">
+      <div class="container">
+        <h2 class="Heading-Featured-in">In Collaboration With</h2>
+        <div class="logos">
+          <img src="{% static 'images/1-tokopeda.jpeg' %}" alt="Logo Tokped" />
+          <img src="{% static 'images/2-WAC.jpeg' %}" alt="Logo WAC" />
+          <img src="{% static 'images/3-IFF.jpeg' %}" alt="Logo iff" />
+          <img src="{% static 'images/4-mnc.jpeg' %}" alt="Logo MNC" />
+          <img
+            src="{% static 'images/5-prudential.jpeg' %}"
+            alt="Logo Prudent"
+          />
+          <img src="{% static 'images/6-bcalife.png' %}" alt="Logo BCA Life" />
+          <img src="{% static 'images/7-Gojek.png' %}" alt="Logo Gojek" />
+          <img
+            src="{% static 'images/8-Smartfren.png' %}"
+            alt="Logo Smarfren"
+          />
+          <img src="{% static 'images/9-Ciputra.png' %}" alt="Logo Ciputra" />
+          <img src="{% static 'images/10-Blibli.png' %}" alt="Logo BNI" />
+          <img
+            src="{% static 'images/11-Sinarmas.png' %}"
+            alt="Logo Sinarmas"
+          />
+          <img src="{% static 'images/12-Zenius.png' %}" alt="Logo Zenius" />
+          <img src="{% static 'images/13-Grup BCA.jpeg' %}" alt="Logo BCA" />
+          <img src="{% static 'images/14-Adira.png' %}" alt="Logo Adira" />
+          <img
+            src="{% static 'images/15-Citilink.png' %}"
+            alt="Logo Citilink"
+          />
+          <img src="{% static 'images/16-Garuda.png' %}" alt="Logo Garuda" />
+        </div>
+      </div>
+    </section>
+    <!-- AS FEATURED IN END -->
+
+    <!-- ABOUT US START -->
+    <section class="about-us" id="about">
+      <div class="about-container">
+        <h2 class="Heading-2">About COOP</h2>
+        <div class="about-us-grid">
+          <div class="about-column">
+            <p>
+              COOP (Co-operative Education) merupakan program yang menggabungkan
+              pendidikan berbasis kelas dengan pengalaman kerja praktis.
+              Mahasiswa yang mengikuti program ini akan melakukan kerja di
+              perusahaan dalam durasi minimal 1 semester. Melalui COOP,
+              diharapkan nantikan mahasiswa akan lebih siap dalam menghadapi
+              dunia kerja setelah lulus karena telah memiliki pengalaman dan
+              keahlian yang dibutuhkan pada saat kerja nanti
+            </p>
+          </div>
+          <div class="about-column">
+            <p>
+              Universitas dapat menunjuk supervisor magang, serta industri juga
+              dapat menunjuk supervisor untuk setiap siswa di tempat magang
+              mereka. Melalui Prasmul Co-OP, akan lebih mudah bagi institusi dan
+              industri untuk memantau dan mengevaluasi magang siswa. Kinerja
+              siswa dapat dilaporkan secara berkala melalui laporan kinerja.
+              Melalui laporan kinerja ini, supervisor magang dapat memantau
+              kemajuan belajar siswa selama magang.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT US END -->
+
+    <!-- DATA START -->
+    <section class="data-section" id="data">
+      <div class="data-container">
+        <div class="data-grid">
+          <!-- Bagian Kiri - Gambar -->
+          <div class="data-image">
+            <img src="{% static 'images/goals.png' %}" alt="Illustration" />
+          </div>
+          <!-- Bagian Kanan - Data -->
+          <div class="data-stats">
+            <div class="stat-item">
+              <div class="stat-header">
+                <ion-icon name="school-outline" class="stat-icon"></ion-icon>
+                <h3>4655</h3>
+              </div>
+              <p style="margin-top: 10px"><b>Students</b> intern registered</p>
+            </div>
+            <div class="stat-item">
+              <div class="stat-header">
+                <ion-icon name="business-outline" class="stat-icon"></ion-icon>
+                <h3>1205</h3>
+              </div>
+              <p style="margin-top: 10px">
+                <b>Industries</b> involved for student internship programs
+              </p>
+            </div>
+            <div class="stat-item">
+              <div class="stat-header">
+                <ion-icon name="person-outline" class="stat-icon"></ion-icon>
+                <h3>291</h3>
+              </div>
+              <p style="margin-top: 10px">
+                <b>Lecturer</b> involved to guide students <br />during
+                internships
+              </p>
+            </div>
+            <div class="stat-item">
+              <div class="stat-header">
+                <ion-icon name="school-outline" class="stat-icon"></ion-icon>
+                <h3>7</h3>
+              </div>
+              <p style="margin-top: 10px">
+                <b>Universities</b> have cooperated with us
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- DATA END -->
+
+    <!-- FEATURES START -->
+    <section class="feature-section" id="features">
+      <h2 class="Heading-2">Features</h2>
+      <div class="container">
+        <div class="gambar-alur">
+          <img src="{% static 'images/alur.png' %}" alt="alur-apply" />
+        </div>
+        <div class="feature-card">
+          <div class="card">
+            <div class="icon">
+              <ion-icon name="bulb-outline"></ion-icon>
+            </div>
+            <h3>Internship Opportunities</h3>
+            <p>
+              Student can register for internship via internship offers or
+              cooperation
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon">
+              <ion-icon name="clipboard-outline"></ion-icon>
+            </div>
+            <h3>Internship Registration</h3>
+            <p>
+              Student can register for internship via internship offers or
+              cooperation
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon">
+              <ion-icon name="document-text-outline"></ion-icon>
+            </div>
+            <h3>Internship Administration</h3>
+            <p>
+              Student can register for internship via internship offers or
+              cooperation
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FEATURES END -->
+
+    <!-- FAQ START -->
+    <section class="faq-section" id="faq">
+      <div class="faq-container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-grid">
+          <div class="faq-accordion">
+            <div class="faq-item question">
+              <div class="faq-question">
+                <h3>Who can use this web?</h3>
+                <button class="faq-toggle">
+                  <ion-icon name="chevron-down-outline"></ion-icon>
+                </button>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Student Internship, Lecturer and Industry. student Internship
+                  mostly consists of Universitas Prasetiya Mulya Student who has
+                  Internship as Subject a.k.a 7th Semester Praseitiya Mulya
+                  Student. Lecturer consists of all of lecturer available in
+                  Prasetiya Mulya, whose ready to guide student through
+                  internship process. Industry consists of any company that has
+                  cooperation with Prasetiya Mulya or has Prasetiya Mulya
+                  Student working with them. Each Industry will need to assign
+                  HRD and Supervisor to use this services.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item question">
+              <div class="faq-question">
+                <h3>How to register to Prasmul Co-OP? (as a Company)</h3>
+                <button class="faq-toggle">
+                  <ion-icon name="chevron-down-outline"></ion-icon>
+                </button>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Companies HRD can register via Prasetiya Mulya CDC to get
+                  Co-OP Account.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item question">
+              <div class="faq-question">
+                <h3>How to register an internship? (as a Student)</h3>
+                <button class="faq-toggle">
+                  <ion-icon name="chevron-down-outline"></ion-icon>
+                </button>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Student Internship can register to internship via Prasmul Eli
+                  or by clicking on Register Internship on Prasmul Co-OP Student
+                  Dashboard.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item question">
+              <div class="faq-question">
+                <h3>How to manage internship administration?</h3>
+                <button class="faq-toggle">
+                  <ion-icon name="chevron-down-outline"></ion-icon>
+                </button>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Student Internship can manage Internship Administration after
+                  Internship Registration completed through Student Dashboard.
+                  Internship Administration including Attendance, Logbook, etc.
+                  Beside Student Internship, Lecturer, HRD and Supervisor are
+                  able to manage Internship Administration as well through their
+                  respective Dashboard.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-image">
+            <img
+              src="{% static 'images/faq.png' %}"
+              alt="FAQ Illustration"
+              class="faq-illustration"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FAQ END -->
+
+    <!-- FOOTER START -->
+    <footer class="footer" id="contactus">
+      <div class="footer-container">
+        <div class="footer-column">
+          <h3>Lokasi</h3>
+          <p><b>Kampus BSD</b></p>
+          <p>
+            BSD City Kavling Edutown I.1<br />Jl. BSD Raya Utama, BSD City
+            15339<br />Kabupaten Tangerang, Indonesia
+          </p>
+          <p><b>Kampus Cilandak</b></p>
+          <p>
+            Jl. RA Kartini (TB Simatupang)<br />Cilandak Barat Jakarta
+            Selatan<br />Jakarta Selatan 12430 Indonesia
+          </p>
+        </div>
+        <div class="footer-column">
+          <h3>Kontak</h3>
+          <p><b>Sarjana :</b></p>
+          <p>Tel: (021) 304-50-500<br />Email: info@prasetiyamulya.ac.id</p>
+          <p><b>Admis / Calon Mahasiswa Baru:</b></p>
+          <p>Call only: (+62) 81511662005<br />WA: (+62) 813 9886 2005</p>
+          <p><b>Magister & Doktor :</b></p>
+          <p>
+            Tel: (021) 751 1126<br />WA: (+62) 81219831982<br />Email:
+            pascasarjana@prasetiyamulya.ac.id
+          </p>
+        </div>
+        <div class="footer-column">
+          <h3>Akun Resmi</h3>
+          <img
+            src="{% static 'images/Universitas-Prasetiya-Mulya_logo_01-Putih-300x84.png' %}"
+            alt="Universitas Prasetiya Mulya Logo"
+            class="footer-logo"
+          />
+          <p><b>Program Sarjana</b></p>
+          <div class="social-media">
+            <ion-icon name="logo-facebook"></ion-icon>
+            <ion-icon name="logo-linkedin"></ion-icon>
+            <ion-icon name="logo-twitter"></ion-icon>
+            <ion-icon name="logo-instagram"></ion-icon>
+          </div>
+          <p><b>Program Magister & Doktor</b></p>
+          <div class="social-media">
+            <ion-icon name="logo-facebook"></ion-icon>
+            <ion-icon name="logo-linkedin"></ion-icon>
+            <ion-icon name="logo-twitter"></ion-icon>
+            <ion-icon name="logo-instagram"></ion-icon>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Copyright © 2024. Universitas Prasetiya Mulya. All Right Reserved</p>
+      </div>
+    </footer>
+    <!-- FOOTER END -->
+
+    <script src="{% static 'assets/vendor/aos/dist/aos.js' %}"></script>
+    <script>
+      $(document).on("ready", function () {
+        // initialization of aos
+        AOS.init({
+          duration: 650,
+          once: true,
+        });
+      });
+    </script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script>
+      document.querySelectorAll(".NavLink").forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          const sectionID = this.getAttribute("href");
+          console.log(`Klik link dengan href: ${sectionID}`);
+
+          if (sectionID.startsWith("#")) {
+            e.preventDefault();
+            const targetSection = document.querySelector(sectionID);
+
+            if (targetSection) {
+              console.log(`Scrolling ke elemen: ${sectionID}`);
+              targetSection.scrollIntoView({
+                behavior: "smooth",
+              });
+            }
+          } else {
+            console.log(`Navigasi ke URL: ${sectionID}`);
+          }
+        });
+      });
+    </script>
+    <script>
+      const questions = document.querySelectorAll(".question");
+
+      questions.forEach(function (question) {
+        const btn = question.querySelector(".faq-toggle");
+        const answer = question.querySelector(".faq-answer");
+
+        btn.addEventListener("click", function () {
+          question.classList.toggle("show-text");
+
+          // Smooth height transition
+          if (question.classList.contains("show-text")) {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+          } else {
+            answer.style.maxHeight = null;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

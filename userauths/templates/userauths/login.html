@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- LINK GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <title>Login - Prasmul Co-OP</title>
+  </head>
+  <body>
+    <!-- HEADER START -->
+    <header>
+      <img
+        src="{% static 'images/LOGO Prasmul.png' %}"
+        alt="Logo Prasmul"
+        class="logo-prasmul"
+      />
+      <nav class="Navbar">
+        <ul class="Navigasi">
+          <li><a class="NavLink" href="{% url 'landing_page' %}">Home</a></li>
+          <li><a class="NavLink" href="{% url 'about' %}">About</a></li>
+          <li><a class="NavLink" href="{% url 'features' %}">Features</a></li>
+          <li><a class="NavLink" href="{% url 'announcements' %}">Announcements</a></li>
+          <li><a class="NavLink" href="{% url 'faq' %}">FAQ</a></li>
+          <li><a class="NavLink" href="{% url 'contactus' %}">Contact Us</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- HEADER END -->
+
+    <!-- LOGIN SECTION START -->
+    <section
+      class="login-section"
+      style="background-image: url('{% static 'images/gambar prasmul bg.avif' %}');"
+    >
+      <div class="login-container">
+        <h2 class="login-heading">Log In</h2>
+
+        <!-- Pesan Notifikasi -->
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                {% if 'dashboard' not in message.tags %}
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    
+        <!-- Form Login -->
+        <form class="login-form" id="loginForm" method="post">
+          {% csrf_token %}
+          <div class="input-group">
+            <label for="id_username" class="form-label">{{ form.username.label }}</label>
+            {{ form.username }}
+            {% if form.username.errors %}
+                <small class="error-message">{{ form.username.errors.0 }}</small>
+            {% endif %}
+          </div>
+          <div class="input-group">
+            <label for="id_password" class="form-label">{{ form.password.label }}</label>
+            {{ form.password }}
+            {% if form.password.errors %}
+                <small class="error-message">{{ form.password.errors.0 }}</small>
+            {% endif %}
+          </div>
+          {% if form.non_field_errors %}
+              <div class="error-message">
+                  {{ form.non_field_errors.0 }}
+              </div>
+          {% endif %}
+          <button type="submit" class="login-btn">Masuk</button>
+        </form>
+
+        <p class="signup-link">
+          Belum teregistrasi? <a href="{% url 'register' %}">Registrasi di sini</a>
+        </p>
+      </div>
+    </section>
+    <!-- LOGIN SECTION END -->
+
+    <!-- FOOTER START -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-column">
+          <h3>Lokasi</h3>
+          <p><b>Kampus BSD</b></p>
+          <p>
+            BSD City Kavling Edutown I.1<br />Jl. BSD Raya Utama, BSD City
+            15339<br />Kabupaten Tangerang, Indonesia
+          </p>
+          <p><b>Kampus Cilandak</b></p>
+          <p>
+            Jl. RA Kartini (TB Simatupang)<br />Cilandak Barat Jakarta
+            Selatan<br />Jakarta Selatan 12430 Indonesia
+          </p>
+        </div>
+        <div class="footer-column">
+          <h3>Kontak</h3>
+          <p><b>Sarjana :</b></p>
+          <p>Tel: (021) 304-50-500<br />Email: info@prasetiyamulya.ac.id</p>
+          <p><b>Admis / Calon Mahasiswa Baru:</b></p>
+          <p>Call only: (+62) 81511662005<br />WA: (+62) 813 9886 2005</p>
+          <p><b>Magister & Doktor :</b></p>
+          <p>
+            Tel: (021) 751 1126<br />WA: (+62) 81219831982<br />Email:
+            pascasarjana@prasetiyamulya.ac.id
+          </p>
+        </div>
+        <div class="footer-column">
+          <h3>Akun Resmi</h3>
+          <img
+            src="{% static 'images/Universitas-Prasetiya-Mulya_logo_01-Putih-300x84.png' %}"
+            alt="Universitas Prasetiya Mulya Logo"
+            class="footer-logo"
+          />
+          <p><b>Program Sarjana</b></p>
+          <div class="social-media">
+            <ion-icon name="logo-facebook"></ion-icon>
+            <ion-icon name="logo-linkedin"></ion-icon>
+            <ion-icon name="logo-twitter"></ion-icon>
+            <ion-icon name="logo-instagram"></ion-icon>
+          </div>
+          <p><b>Program Magister & Doktor</b></p>
+          <div class="social-media">
+            <ion-icon name="logo-facebook"></ion-icon>
+            <ion-icon name="logo-linkedin"></ion-icon>
+            <ion-icon name="logo-twitter"></ion-icon>
+            <ion-icon name="logo-instagram"></ion-icon>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Copyright © 2024. Universitas Prasetiya Mulya. All Right Reserved</p>
+      </div>
+    </footer>
+    <!-- FOOTER END -->
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

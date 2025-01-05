@@ -1,0 +1,48 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block title %}Upload Laporan COOP{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/upload_laporan.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<div class="upload-container">
+    <h1 class="upload-title">Upload Laporan COOP</h1>
+
+    <p class="upload-description">Silahkan masukkan hasil laporan di bawah sini.</p>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data" class="upload-form">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="upload-btn">Unggah</button>
+    </form>
+</div>
+
+<div class="upload-container">
+    {% if laporan_terakhir %}
+    <div class="last-upload-card">
+        <h6 class="last-upload-title">Laporan Terakhir Anda</h6>
+        <p class="small-text"><strong>Judul Laporan:</strong> {{ laporan_terakhir.judul_laporan }}</p>
+        <p class="small-text"><strong>Tanggal Unggah:</strong> {{ laporan_terakhir.tanggal_upload|date:"d M Y H:i" }}</p>
+        <p class="small-text">
+            <strong>File:</strong>
+            <a href="{{ laporan_terakhir.file_laporan.url }}" target="_blank" class="download-link">Lihat/Unduh File</a>
+        </p>
+    </div>
+    {% else %}
+    <p class="no-laporan">Belum ada laporan yang diunggah.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

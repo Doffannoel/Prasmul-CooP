@@ -1,0 +1,541 @@
+<html>
+ <head>
+  <title>
+   Student Details and Placements
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #003366;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+        }
+        .header .title {
+            font-size: 24px;
+        }
+        .container {
+            padding: 20px;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .profile-header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .profile-header .info {
+            font-size: 18px;
+        }
+        .profile-header .info .name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+        .tabs a {
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            background-color: #e9e9e9;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        .tabs a.active {
+            background-color: white;
+            border-bottom: 1px solid white;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        .form-container .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .form-container .form-group label {
+            width: 200px;
+            margin-right: 20px;
+            white-space: nowrap;
+            font-size: 14px;
+        }
+        .form-container .form-group input,
+        .form-container .form-group select {
+            flex: 1;
+            padding: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .form-container .form-group input[type="checkbox"] {
+            width: auto;
+        }
+        .form-container .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .form-container .form-actions button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #003366;
+            color: white;
+            cursor: pointer;
+        }
+        .form-container .form-actions button.delete {
+            background-color: #cc0000;
+        }
+        .form-container .form-actions a {
+            text-decoration: none;
+            color: #003366;
+        }
+        .placement-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .placement-table th, .placement-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        .placement-table th {
+            background-color: #f4f4f4;
+        }
+        .placement-table .details-link {
+            color: #003366;
+            cursor: pointer;
+        }
+        .details-content {
+            display: none;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+        .edit-placement {
+            margin-top: 20px;
+        }
+        .edit-placement label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .edit-placement input, .edit-placement select, .edit-placement textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .edit-placement .row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .edit-placement .row > div {
+            width: 48%;
+        }
+        .edit-placement .buttons {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .edit-placement .buttons button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .edit-placement .buttons button.save {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+        .edit-placement .buttons button.delete {
+            background-color: #f44336;
+            color: #fff;
+        }
+  </style>
+  <script>
+   function showSection(section) {
+            var sections = document.querySelectorAll('.form-section');
+            sections.forEach(function(sec) {
+                sec.style.display = 'none';
+            });
+            document.getElementById(section).style.display = 'block';
+
+            var tabs = document.querySelectorAll('.tabs a');
+            tabs.forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+            document.querySelector('.tabs a[data-section="' + section + '"]').classList.add('active');
+        }
+
+        function toggleDetails(id) {
+            var details = document.getElementById(id);
+            if (details.style.display === 'none' || details.style.display === '') {
+                details.style.display = 'block';
+            } else {
+                details.style.display = 'none';
+            }
+        }
+
+        function editPlacement(allocationGroup, agency, startDate, endDate, duration) {
+            document.getElementById('allocation-group').value = allocationGroup;
+            document.getElementById('agency').value = agency;
+            document.getElementById('start-date').value = startDate;
+            document.getElementById('end-date').value = endDate;
+            document.getElementById('duration').value = duration;
+        }
+  </script>
+ </head>
+ <body>
+  <div class="header">
+   <div class="title">
+    Student
+   </div>
+  </div>
+  <div class="container">
+   <div class="profile-header">
+    <img alt="Profile picture" height="100" src="https://storage.googleapis.com/a1aa/image/n923u7H9rZZTMRKQjx9Gik6g1VLiG5RwJlW3vK6N49y2Xo8E.jpg" width="100"/>
+    <div class="info">
+     <div class="name">
+      Rayhan Diffa Rizky Putra
+     </div>
+     <div>
+      Student Code: 23502110011
+     </div>
+     <div>
+      Date of Birth:
+     </div>
+     <div>
+      Suburb:
+     </div>
+     <div>
+      SIS Record: Yes
+     </div>
+    </div>
+   </div>
+   <div class="tabs">
+    <a class="active" data-section="details" href="javascript:void(0);" onclick="showSection('details')">
+     Details
+    </a>
+    <a data-section="placement" href="javascript:void(0);" onclick="showSection('placement')">
+     Placement
+    </a>
+   </div>
+   <div class="form-section" id="details">
+    <div class="form-container">
+     <div class="form-group">
+      <label>
+       Student Code:
+      </label>
+      <input disabled="" type="text" value="23502110011"/>
+     </div>
+     <div class="form-group">
+      <label>
+       Given Name:
+      </label>
+      <input type="text" value="Rayhan Diffa Rizky"/>
+     </div>
+     <div class="form-group">
+      <label>
+       DOB (d/mm/yyyy):
+      </label>
+      <input type="text"/>
+      <label>
+       Gender:
+      </label>
+      <input type="text" value="Male"/>
+     </div>
+     <div class="form-group">
+      <label>
+       Email:
+      </label>
+      <input type="text" value="23502110011@student.prasetiyamulya.ac.id"/>
+     </div>
+     <div class="form-group">
+      <label>
+       Mobile Phone Number:
+      </label>
+      <input type="text" value="081212239833"/>
+     </div>
+     <div class="form-group">
+      <label>
+       Allocation Address Type:
+      </label>
+      <input type="text"/>
+     </div>
+     <div class="form-group">
+      <label>
+       Full Time / Part Time:
+      </label>
+      <select>
+       <option>
+        Full Time
+       </option>
+      </select>
+      <label>
+       International / Domestic:
+      </label>
+      <select>
+       <option>
+        Domestic
+       </option>
+      </select>
+     </div>
+     <div class="form-group">
+      <label>
+       Accepted Terms/Conditions:
+      </label>
+      <input checked="" disabled="" type="checkbox"/>
+      Yes
+     </div>
+     <div class="form-group">
+      <label>
+       Primary Discipline Calculated:
+      </label>
+      <input disabled="" type="text" value="School of Applied STEM"/>
+      <label>
+       Primary Discipline:
+      </label>
+      <select>
+       <option>
+        School of Applied STEM
+       </option>
+      </select>
+     </div>
+     <div class="form-actions">
+      <div>
+       <button class="delete">
+        Delete
+       </button>
+       <button>
+        Save
+       </button>
+       <button>
+        Cancel
+       </button>
+       <button>
+        Email Student's Information
+       </button>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="form-section" id="placement" style="display:none;">
+    <div class="form-container">
+     <table class="placement-table">
+      <thead>
+       <tr>
+        <th>
+         Allocation Group
+        </th>
+        <th>
+         Agency
+        </th>
+        <th>
+         Start Date
+        </th>
+        <th>
+         End Date
+        </th>
+        <th>
+         Duration
+        </th>
+       </tr>
+      </thead>
+      <tbody>
+       <tr onclick="editPlacement('2020 Cohort Business Mathematics Cooperative Education Students', 'Akademikarti.id', '28/10/2021', '4/01/2022', '88 Days')">
+        <td>
+         2020 Cohort Business Mathematics Cooperative Education Students
+        </td>
+        <td>
+         Akademikarti.id
+        </td>
+        <td>
+         28/10/2021
+        </td>
+        <td>
+         4/01/2022
+        </td>
+        <td>
+         88 Days
+        </td>
+       </tr>
+       <tr onclick="editPlacement('2020 Cohort Business Mathematics Cooperative Education Students', 'CSI Creative Lab', '28/11/2021', '20/06/2022', '210 Days')">
+        <td>
+         2020 Cohort Business Mathematics Cooperative Education Students
+        </td>
+        <td>
+         CSI Creative Lab
+        </td>
+        <td>
+         28/11/2021
+        </td>
+        <td>
+         20/06/2022
+        </td>
+        <td>
+         210 Days
+        </td>
+       </tr>
+       <tr onclick="editPlacement('2020 Cohort Business Mathematics Cooperative Education Students', 'Tspmahasiswa.id', '1/03/2022', '5/06/2022', '88 Days')">
+        <td>
+         2020 Cohort Business Mathematics Cooperative Education Students
+        </td>
+        <td>
+         Tspmahasiswa.id
+        </td>
+        <td>
+         1/03/2022
+        </td>
+        <td>
+         5/06/2022
+        </td>
+        <td>
+         88 Days
+        </td>
+       </tr>
+       <tr onclick="editPlacement('2020 Cohort Business Mathematics Cooperative Education Students', 'KAIA Project', '14/07/2022', '5/01/2023', '180 Days')">
+        <td>
+         2020 Cohort Business Mathematics Cooperative Education Students
+        </td>
+        <td>
+         KAIA Project
+        </td>
+        <td>
+         14/07/2022
+        </td>
+        <td>
+         5/01/2023
+        </td>
+        <td>
+         180 Days
+        </td>
+       </tr>
+       <tr onclick="editPlacement('2020 Cohort Business Mathematics Cooperative Education Students', 'PT AJ Central Asia Raya (CAR)', '5/09/2023', '31/12/2023', '83 Days')">
+        <td>
+         2020 Cohort Business Mathematics Cooperative Education Students
+        </td>
+        <td>
+         PT AJ Central Asia Raya (CAR)
+        </td>
+        <td>
+         5/09/2023
+        </td>
+        <td>
+         31/12/2023
+        </td>
+        <td>
+         83 Days
+        </td>
+       </tr>
+      </tbody>
+     </table>
+     <div class="edit-placement">
+      <h3>
+       Edit Placement
+      </h3>
+      <label for="allocation-group">
+       Allocation Groups:
+      </label>
+      <select id="allocation-group">
+       <option>
+        2020 Cohort Business Mathematics Cooperative Education Students
+       </option>
+      </select>
+      <label for="agency">
+       Agency:
+      </label>
+      <input id="agency" type="text"/>
+      <div class="row">
+       <div>
+        <label for="start-date">
+         Start Date (dd/mm/yyyy):
+        </label>
+        <input id="start-date" type="text"/>
+       </div>
+       <div>
+        <label for="end-date">
+         End Date (dd/mm/yyyy):
+        </label>
+        <input id="end-date" type="text"/>
+       </div>
+      </div>
+      <label for="duration">
+       Duration:
+      </label>
+      <input id="duration" type="text"/>
+      <label for="allocation">
+       Allocation:
+      </label>
+      <select id="allocation">
+       <option>
+        Manual
+       </option>
+      </select>
+      <label for="experience">
+       Experience:
+      </label>
+      <div class="row">
+       <div>
+        <input id="experience" type="text"/>
+       </div>
+       <div>
+        <label for="unit-of-measure">
+         Unit of Measure:
+        </label>
+        <select id="unit-of-measure">
+         <option>
+          Day
+         </option>
+        </select>
+        <button>
+         Remove
+        </button>
+       </div>
+      </div>
+      <label for="supervisor">
+       Supervisor:
+      </label>
+      <input id="supervisor" type="text"/>
+      <button>
+       Add
+      </button>
+      <label for="comments">
+       Comments:
+      </label>
+      <textarea id="comments"></textarea>
+      <div class="buttons">
+       <button class="save">
+        Save
+       </button>
+       <button class="delete">
+        Delete
+       </button>
+      </div>
+     </div>
+    </div>
+   </div>
+   <a href="#">
+    Back to List
+   </a>
+  </div>
+ </body>
+</html>

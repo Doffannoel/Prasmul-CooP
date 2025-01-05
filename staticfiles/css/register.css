@@ -1,0 +1,138 @@
+/* Body Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f7ff;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Styling */
+.header {
+  background-color: #0b74bb;
+  color: white;
+  padding: 20px 40px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-prasmul {
+  height: 60px;
+  margin-right: 20px;
+}
+
+.text-content {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.text-content p {
+  font-size: 16px;
+  margin: 0;
+  font-weight: normal;
+}
+
+.text-content h1 {
+  font-size: 28px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.text-content .portal {
+  font-size: 18px;
+  margin-top: 5px;
+  font-weight: normal;
+}
+
+/* Form Container Styling */
+.container {
+  width: 50%;
+  margin: 20px auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Form Actions Styling */
+.form-actions {
+  text-align: center;
+}
+
+.form-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.form-actions .btn-save {
+  background-color: #0b74bb;
+  color: white;
+  margin-right: 10px;
+}
+
+.form-actions .btn-back {
+  background-color: #e7e7e7;
+  color: black;
+}
+
+.form-actions button:hover {
+  opacity: 0.9;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo-prasmul {
+    margin-bottom: 10px;
+  }
+
+  .text-content {
+    text-align: center;
+  }
+
+  .container {
+    width: 90%;
+  }
+}
+
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  

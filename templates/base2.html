@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Prasmul Co-OP{% endblock %}</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    {% block extra_css %}{% endblock %}
+  </head>
+  <body>
+    <!-- HEADER/ NAVBAR -->
+    <header class="dashboard-header">
+      <img src="{% static 'images/LOGO Prasmul.png' %}" alt="Logo Prasmul" class="logo-prasmul">
+      <nav class="dashboard-navbar">
+        <ul class="nav-links">
+          <li>
+            <a href="#"><ion-icon name="notifications-outline"></ion-icon></a>
+          </li>
+          <li>
+            <a class="NavLink logout-button" href="{% url 'landing_page' %}">Logout</a>
+          </li>          
+        </ul>
+      </nav>
+    </header>
+
+    <!-- SIDEBAR -->
+    <section class="dashboard">
+      <div class="dashboard-sidebar">
+        <ul>
+          <li>
+            <ion-icon name="home-outline"></ion-icon>
+            <i class="fas fa-home"></i>
+            <a href="{% url 'student_dashboard' %}">Dashboard</a>
+          </li>
+          <li>
+            <ion-icon name="document-text-outline"></ion-icon>
+            <i class="fas fa-file-alt"></i> <!-- Ikon form -->
+            <a href="{% url 'company_form' %}">Company Form</a>
+          </li>
+          <li>
+            <ion-icon name="document-text-outline"></ion-icon>
+            <i class="fas fa-upload"></i> <!-- Ikon upload -->
+            <a href="{% url 'upload_laporan' %}" >Report COOP</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="dashboard-content">
+        {% block content %}
+        <!-- Konten spesifik halaman akan dimasukkan di sini -->
+        {% endblock %}
+      </div>
+    </section>
+    <!-- FOOTER START -->
+    <footer class="footer" id="contactus">
+      <div class="footer-container">
+        <div class="footer-column">
+          <h3>Lokasi</h3>
+          <p><b>Kampus BSD</b></p>
+          <p>
+            BSD City Kavling Edutown I.1<br />Jl. BSD Raya Utama, BSD City
+            15339<br />Kabupaten Tangerang, Indonesia
+          </p>
+          <p><b>Kampus Cilandak</b></p>
+          <p>
+            Jl. RA Kartini (TB Simatupang)<br />Cilandak Barat Jakarta
+            Selatan<br />Jakarta Selatan 12430 Indonesia
+          </p>
+        </div>
+        <div class="footer-column">
+          <h3>Kontak</h3>
+          <p><b>Sarjana :</b></p>
+          <p>Tel: (021) 304-50-500<br />Email: info@prasetiyamulya.ac.id</p>
+          <p><b>Admis / Calon Mahasiswa Baru:</b></p>
+          <p>Call only: (+62) 81511662005<br />WA: (+62) 813 9886 2005</p>
+          <p><b>Magister & Doktor :</b></p>
+          <p>
+            Tel: (021) 751 1126<br />WA: (+62) 81219831982<br />Email:
+            pascasarjana@prasetiyamulya.ac.id
+          </p>
+        </div>
+        <div class="footer-column">
+          <h3>Akun Resmi</h3>
+          <img
+            src="{% static 'images/Universitas-Prasetiya-Mulya_logo_01-Putih-300x84.png' %}"
+            alt="Universitas Prasetiya Mulya Logo"
+            class="footer-logo"
+          />
+          <p><b>Program Sarjana</b></p>
+          <div class="social-media">
+            <ion-icon name="logo-facebook"></ion-icon>
+            <ion-icon name="logo-linkedin"></ion-icon>
+            <ion-icon name="logo-twitter"></ion-icon>
+            <ion-icon name="logo-instagram"></ion-icon>
+          </div>
+          <p><b>Program Magister & Doktor</b></p>
+          <div class="social-media">
+            <ion-icon name="logo-facebook"></ion-icon>
+            <ion-icon name="logo-linkedin"></ion-icon>
+            <ion-icon name="logo-twitter"></ion-icon>
+            <ion-icon name="logo-instagram"></ion-icon>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Copyright © 2024. Universitas Prasetiya Mulya. All Right Reserved</p>
+      </div>
+    </footer>
+    <!-- FOOTER END -->
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>

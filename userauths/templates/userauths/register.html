@@ -1,0 +1,122 @@
+{% load static %}
+<html>
+  <head>
+    <title>Universitas Prasetiya Mulya - Registrasi</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/register.css' %}" />
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <div class="header-content">
+        <img
+          alt="Logo Universitas Prasetiya Mulya"
+          src="{% static 'images/Prasmul_logo_01-Putih.png' %}"
+          class="logo-prasmul"
+        />
+        <div class="text-content">
+          <h1>Registrasi Mahasiswa COOP</h1>
+          <h2 class="portal">School of Applied STEM</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Container -->
+    <div class="container">
+      <h2>Form Pendaftaran Mahasiswa</h2>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="nim">Nomor Induk Mahasiswa (NIM)</label>
+          <input
+            id="nim"
+            name="nim"
+            type="text"
+            placeholder="Masukkan NIM Anda"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="full_name">Nama Lengkap</label>
+          <input
+            id="full_name"
+            name="full_name"
+            type="text"
+            placeholder="Masukkan nama lengkap Anda"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="birth_date">Tanggal Lahir</label>
+          <input id="birth_date" name="birth_date" type="date" required />
+        </div>
+        <div class="form-group">
+          <label for="study_mode">Status</label>
+          <select id="study_mode" name="study_mode" required>
+            <option value="">-- Pilih Status --</option>
+            <option value="Fulltime">Fulltime</option>
+            <option value="Parttime">Parttime</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="primary_discipline">Primary Discipline</label>
+          <select id="primary_discipline" name="primary_discipline" required>
+            <option value="">-- Pilih Disiplin Utama --</option>
+            <option value="Business Mathematics">Business Mathematics</option>
+            <option value="School of Applied STEM">
+              School of Applied STEM
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mobile_phone">Nomor Handphone</label>
+          <input
+            id="mobile_phone"
+            name="mobile_phone"
+            type="text"
+            placeholder="Contoh: 628123456789"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="campus_email">Email Kampus</label>
+          <input
+            id="campus_email"
+            name="campus_email"
+            type="email"
+            placeholder="Email berakhiran @student.prasetiyamulya.ac.id"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Masukkan password"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="confirm_password">Konfirmasi Password</label>
+          <input
+            id="confirm_password"
+            name="confirm_password"
+            type="password"
+            placeholder="Ulangi password"
+            required
+          />
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-save">Daftar</button>
+          <button type="reset" class="btn-back">Reset</button>
+        </div>
+      </form>
+      
+    </div>
+  </body>
+</html>

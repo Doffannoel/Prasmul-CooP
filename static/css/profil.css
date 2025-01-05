@@ -1,0 +1,276 @@
+/* General Styles
+body.profil-mahasiswa {
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+} 
+
+/* Profile Section */
+/* .profil-mahasiswa .profile-container {
+    max-width: 100%;
+}
+
+.profil-mahasiswa .profile-card {
+    background-color: #F3F7FE;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.profil-mahasiswa .profile-header {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start; /* Menyelaraskan ke atas agar tidak ada penumpukan */
+    /* background-color: #F3F7FE;
+} */
+
+/* .profil-mahasiswa .profile-picture {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.profil-mahasiswa .profile-picture img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profil-mahasiswa .upload-btn {
+    background-color: #3498db;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+    text-align: center;
+} */
+
+/* .profil-mahasiswa .upload-btn:hover {
+    background-color: #2980b9;
+} */
+
+/* Profile Info */
+.profil-mahasiswa .profile-info {
+    flex: 1;
+    padding: 10px;
+}
+
+.profil-mahasiswa .profile-name {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.profil-mahasiswa .personal-info {
+    display: flex;
+    justify-content: space-between; /* Membuat dua kolom kiri dan kanan */
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.profil-mahasiswa .personal-info p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: black;
+    display: flex;
+    justify-content: space-between; /* Teks kiri dan kanan */
+    gap: 20px; /* Menambahkan jarak antar kolom */
+}
+
+.profil-mahasiswa .personal-info strong {
+    color: #2980b9;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+/* Left Column for Personal Info (Tanggal Lahir, Program Studi, Mode Studi) */
+.profil-mahasiswa .personal-info .left-column {
+    flex: 1; /* Kolom kiri mengambil ruang */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Right Column for Icons and Contact Info (Nomor Ponsel & Email) */
+.profil-mahasiswa .personal-info .right-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Memastikan ikon di bawah */
+    align-items: flex-start; /* Menempatkan ikon di sebelah kanan */
+    gap: 10px;
+}
+
+.profil-mahasiswa .personal-info .right-column i {
+    font-size: 16px;
+    color: #3498db;
+}
+
+/* Contact Info - Memindahkan ikon ke kanan */
+.profil-mahasiswa .contact-info p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+.profil-mahasiswa .contact-info .icon-right {
+    margin-left: 10px;
+}
+
+/* Company Details Section */
+.profil-mahasiswa .company-container {
+    background-color: #F3F7FE;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profil-mahasiswa .company-container h2 {
+    font-size: 26px; /* Ukuran font diperkecil sedikit */
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.profil-mahasiswa .company-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.profil-mahasiswa .company-item {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between; /* Membuat dua kolom */
+    gap: 20px; /* Memberikan jarak antar kolom */
+}
+
+.profil-mahasiswa .company-container .company-item p {
+    font-size: 16px; /* Ukuran font diperkecil sedikit */
+    margin: 5px 0;
+    color : black;
+    width: 45%; /* Membatasi lebar supaya dua kolom bisa seimbang */
+    white-space: nowrap; /* Mencegah teks terbungkus ke baris kedua */
+}
+
+.profil-mahasiswa .company-item strong {
+    font-weight: bold;
+    color: #2980b9;
+    font-size: 16px; /* Ukuran font diperkecil sedikit */
+    letter-spacing: 1px;
+}
+
+/* Styling untuk kiri dan kanan pada Company */
+.profil-mahasiswa .company-item .left-column, 
+.profil-mahasiswa .company-item .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+} 
+
+.profil-mahasiswa .company-item .left-column {
+    width: 48%; /* Kolom kiri */
+}
+
+.profil-mahasiswa .company-item .right-column {
+    width: 48%; /* Kolom kanan */
+}
+
+.profil-mahasiswa .company-item .left-column p,
+.profil-mahasiswa .company-item .right-column p {
+    font-size: 16px; /* Ukuran font diperkecil sedikit */
+    color: black;
+    margin: 5px 0;
+    white-space: nowrap; /* Mencegah teks terbungkus ke baris kedua */
+}
+/* Laporan Section */
+.profil-mahasiswa .laporan-container {
+    background-color: #F3F7FE !important;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Judul Daftar Laporan */
+.profil-mahasiswa .laporan-container h2 {
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Styling untuk daftar laporan */
+.profil-mahasiswa .laporan-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Item laporan */
+.profil-mahasiswa .laporan-item {
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.profil-mahasiswa .laporan-item:hover {
+    background-color: #f1f1f1;
+}
+
+/* Bagian kiri untuk informasi laporan */
+.profil-mahasiswa .laporan-left {
+    flex: 1;
+    padding-right: 20px;
+}
+
+/* Bagian kanan untuk status dan link download */
+.profil-mahasiswa .laporan-right {
+    flex: 0.6;
+}
+
+/* Styling untuk teks di laporan */
+.profil-mahasiswa .laporan-item p {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+}
+
+/* Styling untuk judul dan informasi laporan */
+.profil-mahasiswa .laporan-item strong {
+    color: #2980b9;
+    font-weight: bold;
+}
+
+/* Link download laporan */
+.profil-mahasiswa .laporan-item a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.profil-mahasiswa .laporan-item a:hover {
+    text-decoration: underline;
+}
+
+/* Pesan jika tidak ada laporan */
+.profil-mahasiswa .laporan-container p {
+    color: #999;
+    font-size: 16px;
+}
+
+/* Styling untuk judul laporan */
+.profil-mahasiswa .laporan-item .laporan-left p:first-child {
+    font-size: 18px; /* Menambah sedikit ukuran font untuk judul laporan */
+    color: #333; /* Memberikan warna lebih gelap pada judul */
+}  

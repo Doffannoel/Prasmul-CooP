@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}Student List{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="filter">
+        <h2>Filter</h2>
+        <form method="get">
+            <div class="row">
+                <div class="col">
+                    <label for="student-code">NIM</label>
+                    <input type="text" id="student-code" name="nim" value="{{ request.GET.nim }}" />
+                </div>
+                <div class="col">
+                    <label for="full_name">Nama Lengkap</label>
+                    <input type="text" id="surname" name="full_name" value="{{ request.GET.full_name }}" />
+                </div>
+                <div class="col">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="campus_email" value="{{ request.GET.campus_email }}" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="discipline">Discipline</label>
+                    <select id="discipline" name="primary_discipline">
+                        <option value="" {% if request.GET.primary_discipline == "" %}selected{% endif %}>All</option>
+                        <option value="Business Mathematics" {% if request.GET.primary_discipline == "Business Mathematics" %}selected{% endif %}>Business Mathematics</option>
+                        <option value="School of Applied STEM" {% if request.GET.primary_discipline == "School of Applied STEM" %}selected{% endif %}>School of Applied STEM</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="form-status">Form Perusahaan</label>
+                    <select id="form-status" name="company_status">
+                        <option value="" {% if request.GET.company_status == "" %}selected{% endif %}>All</option>
+                        <option value="submitted" {% if request.GET.company_status == "submitted" %}selected{% endif %}>Sudah Mengisi</option>
+                        <option value="not_submitted" {% if request.GET.company_status == "not_submitted" %}selected{% endif %}>Belum Mengisi</option>
+                    </select>
+                </div>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="filter-btn">Filter</button>
+                <button type="button" class="reset-btn" onclick="resetFilters()">Reset</button>
+            </div>
+        </form>
+    </div>
+    <div class="actions">
+        <a href="{% url 'add_student' %}" class="btn btn-primary add-all-btn">
+            <i class="fas fa-user-plus"></i> Add Student
+        </a>
+        <button class="btn btn-danger remove-all-btn" onclick="clearFilters()">Remove all</button>
+        <button class="btn btn-warning clear-clipboard-btn">Clear Clipboard</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>NIM</th>
+                <th>Nama Lengkap</th>
+                <th>Email</th>
+                <th>Discipline</th>
+                <th>Study Mode</th>
+                <th>Status Form Perusahaan</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>
+                    <a href="{% url 'student_profile' student.nim %}">{{ student.nim }}</a>
+                </td>
+                <td>{{ student.full_name }}</td>
+                <td>{{ student.campus_email }}</td>
+                <td>{{ student.primary_discipline }}</td>
+                <td>{{ student.study_mode }}</td>
+                <td>
+                    {% if student.company_data.exists %}
+                        Sudah Mengisi
+                    {% else %}
+                        Belum Mengisi
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No students found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="table-actions">
+        <button class="bulk-action-btn">Bulk Action</button>
+        <button class="add-item-btn">Add a New Item</button>
+        <button class="print-list-btn">Print List</button>
+    </div>
+</div>
+<script>
+    function clearFilters() {
+        const form = document.querySelector(".filter form");
+        form.reset();
+        form.submit();
+    }
+    function resetFilters() {
+        const baseUrl = window.location.origin + window.location.pathname;
+        window.location.href = baseUrl;
+    }
+</script>
+{% endblock %}

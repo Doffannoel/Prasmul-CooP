@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block title %}Grafik Mahasiswa Mendaftar Magang{% endblock %}
+
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <h1 class="text-center mb-4">Grafik Mahasiswa Mendaftar Coop per Bulan</h1>
+    
+    <!-- Card untuk Mahasiswa yang sudah mengisi form perusahaan -->
+    <div class="row card-container justify-content-center">
+        <div class="col-md-2 col-sm-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h5>Mahasiswa yang Sudah Mengisi Form Perusahaan</h5>
+                </div>
+                <div class="card-body">
+                    <h4>{{ students_with_company_data }}</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card untuk Mahasiswa yang belum mengisi form perusahaan -->
+        <div class="col-md-2 col-sm-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h5>Mahasiswa yang Belum Mengisi Form Perusahaan</h5>
+                </div>
+                <div class="card-body">
+                    <h4>{{ students_without_company_data }}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grafik dengan Gradasi -->
+    <div class="chart-container">
+        <canvas id="signupChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('signupChart').getContext('2d');
+        const signupData = {
+            labels: [{% for month in months %}'{{ month }}',{% endfor %}],  // Bulan sebagai label sumbu X
+            datasets: [{
+                label: 'Jumlah Mahasiswa Mendaftar',
+                data: [{% for count in student_counts %}{{ count }},{% endfor %}],  // Jumlah mahasiswa yang mendaftar
+                borderColor: 'rgba(75, 192, 192, 1)',
+                fill: false
+            }]
+        };
+
+        // Membuat grafik
+        new Chart(ctx, {
+            type: 'line',  // Jenis grafik: line chart
+            data: signupData,
+            options: {
+                responsive: true,  // Agar grafik responsif sesuai ukuran container
+                maintainAspectRatio: false,  // Memastikan ukuran grafik tidak tetap, bisa disesuaikan
+                scales: {
+                    y: {
+                        min: 0,  // Menetapkan nilai minimum sumbu Y
+                        max: 70,  // Menetapkan nilai maksimum sumbu Y (sesuaikan dengan data tertinggi)
+                        ticks: {
+                            stepSize: 10,  // Interval antar angka sumbu Y
+                            callback: function(value) {
+                                return value.toFixed(0);  // Memastikan angka bulat pada sumbu Y
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+    <style>
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background-color: #4e73df;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 12px 12px 0 0;
+        }
+
+        /* Memperkecil ukuran font pada header card */
+        .card-header h5 {
+            font-size: 14px;  /* Memperkecil ukuran font */
+        }
+
+        .card-body {
+            background-color: #f2f7ff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-body h4 {
+            color: #4e73df;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Gradasi di bawah grafik */
+        #signupChart {
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Menambahkan efek gradasi di bawah grafik */
+        .chart-container {
+            position: relative;
+            margin-top: 20px; /* Memberi jarak antara card dan grafik */
+            height: 400px; /* Memperbesar tinggi grafik */
+            width: 100%;  /* Memperbesar lebar grafik */
+        }
+
+        .chart-container:after {
+            content: "";
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: linear-gradient(to top, #f8f9fc, transparent);
+        }
+
+        /* Styling untuk container kartu */
+        .card-container {
+            margin-bottom: 30px;
+        }
+    </style>
+{% endblock %}

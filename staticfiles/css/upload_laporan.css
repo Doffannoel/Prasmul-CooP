@@ -1,0 +1,179 @@
+/* General Styling */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    font-size: 18px; /* Increased base font size */
+}
+
+.upload-container body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F3F7FE;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    font-size: 18px; /* Increased base font size */
+}
+
+/* Container Styling */
+.upload-container h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px; /* Increased margin */
+}
+/* Heading tetap */
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 3rem; /* Heading lebih besar */
+    font-weight: bold;
+    font-size: 2.5rem; /* Increased font size */
+}
+
+.upload-container p {
+    text-align: center;
+    font-size: 1.5rem; /* Increased font size */
+    color: #F3F7FE;
+    margin-bottom: 30px; /* Increased margin */
+}
+
+/* Form Styling */
+.upload-container form {
+    max-width: 700px; /* Increased max-width */
+    margin: 0 auto;
+    padding: 30px; /* Increased padding */
+    background: #fff;
+    border-radius: 10px; /* Increased border radius */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Increased shadow */;
+}
+
+.upload-container form button {
+    display: block;
+    width: 100%;
+    padding: 15px 25px; /* Increased padding */
+    font-size: 1.2rem; /* Increased font size */
+    background-color: #0059ff;
+    color: #fff;
+    border: none;
+    border-radius: 8px; /* Increased border radius */
+    font-size: 1.7rem; /* Subjudul lebih besar */
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+/* Form di tengah layar, sedikit geser ke kanan */
+form {
+    max-width: 800px; /* Lebar card */
+    margin: 0 auto;
+    padding: 40px; /* Padding di dalam card */
+    background: #f8f9fa; /* Ubah background card sesuai dengan warna */
+    border-radius: 12px; /* Radius sudut */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1); /* Bayangan */
+    
+    /* Posisi tengah, geser sedikit ke kanan */
+    position: absolute; /* Menggunakan absolute agar ikut scroll */
+    top: 50%; /* Setel ke 50% dari atas layar */
+    left: 60%; /* Geser ke kanan dengan menambah nilai left */
+    transform: translate(-50%, -50%); /* Geser ke tengah dari posisi baru */
+    width: auto; /* Agar form bisa menyesuaikan ukuran */
+    max-width: 900px; /* Menentukan lebar maksimal */
+    box-sizing: border-box; /* Agar padding tidak menambah ukuran */
+}
+
+/* Group untuk label dan input */
+.form-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Mengurangi jarak antara label dan input/tombol */
+    margin-bottom: 15px; /* Kurangi jarak antar grup form */
+}
+
+.form-group label {
+    font-size: 1.8rem; /* Ukuran font label lebih besar */
+    font-weight: bold;
+    flex: 0 0 180px; /* Lebar label lebih sempit */
+    text-align: left;
+}
+
+.form-group input[type="file"] {
+    flex: 1 1 auto;
+    padding: 10px; /* Kurangi padding di input */
+    font-size: 1.5rem;
+}
+
+/* Tombol lebih besar */
+form button {
+    display: block;
+    width: 100%;
+    padding: 12px 20px; /* Kurangi padding tombol */
+    font-size: 1.5rem;
+    background-color: #3498db; /* Tombol warna biru */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.upload-container form button:hover {
+    background-color: #2980b9;
+}
+
+.upload-container form input,
+.upload-container form textarea,
+.upload-container form select {
+    width: 100%;
+    padding: 15px; /* Increased padding */
+    margin: 15px 0; /* Increased margin */
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Increased border radius */
+    font-size: 1.2rem; /* Increased font size */
+}
+
+/* Messages Styling */
+.upload-container .message {
+    margin: 0 auto 30px auto; /* Increased bottom margin */
+    max-width: 700px; /* Increased max-width */
+    padding: 15px; /* Increased padding */
+    border-radius: 8px; /* Increased border radius */
+    text-align: center;
+    font-size: 1.1rem; /* Increased font size */
+}
+
+.upload-container .message.success {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+.upload-container .message.error {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .upload-container form {
+        padding: 25px; /* Adjusted padding */
+    }
+
+    .upload-container h1 {
+        font-size: 2rem; /* Adjusted font size */
+    }
+
+    .upload-container p {
+        font-size: 1.3rem; /* Adjusted font size */
+    }
+
+    .upload-container form button {
+        font-size: 1.1rem; /* Adjusted font size */
+    }
+
+    .upload-container form input,
+    .upload-container form textarea,
+    .upload-container form select {
+        font-size: 1.1rem; /* Adjusted font size */
+    }
+}

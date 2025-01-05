@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Profile{% endblock %}
+
+{% block content %}
+<!-- Display messages -->
+{% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="profile-header">
+    <img
+        alt="Profile Picture"
+        height="100"
+        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+        width="100"
+    />
+    <div class="info">
+        <h2>{{ profile.full_name }}</h2>
+        <p>Email: {{ request.user.email }}</p>
+    </div>
+</div>
+
+<div class="tabs">
+    <div class="tab-content">
+        <h3>Details</h3>
+        <form method="post">
+          {% csrf_token %}
+          <div class="form-row">
+              <!-- Nama Lengkap -->
+              <div class="form-group">
+                  <label for="full_name">
+                      Nama Lengkap:
+                      <span style="color: red"> * </span>
+                  </label>
+                  <input
+                      id="full_name"
+                      name="full_name"
+                      type="text"
+                      class="form-control"
+                      value="{{ profile.full_name }}"
+                      required
+                  />
+                  {% if form.full_name.errors %}
+                      <div class="text-danger">
+                          {{ form.full_name.errors }}
+                      </div>
+                  {% endif %}
+              </div>
+              <!-- Gender -->
+              <div class="form-group">
+                  <label for="gender">
+                      Gender:
+                      <span style="color: red"> * </span>
+                  </label>
+                  <select id="gender" name="gender" class="form-control">
+                    <option value="Male" {% if profile.gender == "Male" %}selected{% endif %}>Male</option>
+                    <option value="Female" {% if profile.gender == "Female" %}selected{% endif %}>Female</option>
+                </select>                           
+                  {% if form.gender.errors %}
+                      <div class="text-danger">
+                          {{ form.gender.errors }}
+                      </div>
+                  {% endif %}
+              </div>
+              <!-- Staff Code -->
+              <div class="form-group">
+                  <label for="staff-code">
+                      Staff Code:
+                      <span style="color: red"> * </span>
+                  </label>
+                  <input
+                      id="staff-code"
+                      name="staff_code"
+                      type="text"
+                      class="form-control"
+                      value="{{ profile.staff_code }}"
+                      required
+                  />
+                  {% if form.staff_code.errors %}
+                      <div class="text-danger">
+                          {{ form.staff_code.errors }}
+                      </div>
+                  {% endif %}
+              </div>
+          </div>
+          <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Save</button>
+              <button type="reset" class="btn btn-secondary">Cancel</button>
+          </div>
+      </form>      
+    </div>
+</div>
+
+<div class="user-account">
+    <h3>User Account</h3>
+    <p>Account Type: External</p>
+    <p>Account Creation Date: {{ request.user.date_joined|date:"d/m/Y" }}</p>
+    <p>Last Login Date: {{ request.user.last_login|date:"d/m/Y H:i A" }}</p>
+    <div style = 'padding-top: 20px; padding-bottom: 20;'>
+        <a href="{% url 'change_password_admin' %}" class="btn btn-warning">Ganti Password</a>
+    </div>
+</div>
+{% endblock %}

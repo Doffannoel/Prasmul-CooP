@@ -1,0 +1,152 @@
+/* Profil Mahasiswa - Profile Section */
+.profil-mahasiswa .profile-container {
+    max-width: 800px;
+    background-color: #F3F7FE;
+    padding: 30px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profil-mahasiswa .profile-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    width: 48%;
+}
+
+.profil-mahasiswa .profile-header {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+}
+
+.profil-mahasiswa .profile-picture {
+    position: relative;
+}
+
+.profil-mahasiswa .profile-picture img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.profil-mahasiswa .upload-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #2980b9;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.profil-mahasiswa .profile-name {
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.profil-mahasiswa .personal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.profil-mahasiswa .personal-info p {
+    font-size: 16px;
+    color: #555;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;  /* Make sure items align to the left */
+    text-align: left;  /* Ensure the text is aligned to the left */
+}
+
+.profil-mahasiswa .personal-info strong {
+    color: #2980b9;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+.profil-mahasiswa .personal-info .icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Company Details Section */
+.profil-mahasiswa .company-container {
+    max-width: 800px;
+    background-color: #F3F7FE;
+    padding: 30px;
+    box-sizing: border-box;
+    margin: 30px auto 0;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profil-mahasiswa .company-container h2 {
+    margin-bottom: 0;
+}
+
+.profil-mahasiswa .company-details {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profil-mahasiswa .company-details-left,
+.profil-mahasiswa .company-details-right {
+    width: 48%;
+}
+
+.profil-mahasiswa .company-details p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+    display: flex;
+    justify-content: space-between;
+    align-items: left !important;
+}
+
+.profil-mahasiswa .company-details strong {
+    color: #2980b9;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+/* Responsiveness: Mobile-friendly */
+@media (max-width: 768px) {
+    .profil-mahasiswa .profile-container {
+        padding: 20px;
+        flex-direction: column;
+    }
+
+    .profil-mahasiswa .profile-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .profil-mahasiswa .company-details {
+        flex-direction: column;
+    }
+
+    .profil-mahasiswa .company-details-left,
+    .profil-mahasiswa .company-details-right {
+        width: 100%;
+    }
+}

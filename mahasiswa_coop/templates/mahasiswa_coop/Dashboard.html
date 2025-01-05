@@ -1,0 +1,82 @@
+{% extends 'base2.html' %}
+
+{% block title %}Profil Mahasiswa{% endblock %}
+
+{% block content %}
+<div class="alert-bar">
+    <p>
+        Peringatan! Silahkan ubah password karena saat ini masih menggunakan
+        default password. 
+        <a href="{% url 'change_password_mahasiswa' %}" class="btn btn-warning">Ganti Password</a>
+    </p>
+</div>
+  <div class="profil-mahasiswa">
+    <!-- Last Updated -->
+    <div class="last-login-container">
+        {% if last_login %}
+            <h3>Last Login: {{ last_login|date:"F j, Y, g:i a" }}</h3>
+        {% else %}
+            <h3>Last login information is not available.</h3>
+        {% endif %}
+    </div>
+
+    <!-- Profile Section -->
+    <div class="profile-container">
+        <div class="profile-card">
+            <div class="profile-header">
+                <!-- Left Column (Profile Picture and Info) -->
+                <div class="profile-picture">
+                    <img src="https://claritycareconsulting.co.uk/wp-content/uploads/2023/05/Blank-Profile-Picture.jpg" alt="Profile Picture">
+                    <button id="upload-button" class="upload-btn">UPLOAD</button>
+                </div>
+                <div class="profile-info">
+                    <h2 class="profile-name">{{ profile.full_name }}</h2>
+                    <div class="personal-info">
+                        <div class="left-column">
+                            <p><strong>Tanggal Lahir:</strong> {{ profile.birth_date }}</p>
+                            <p><strong>Program Studi:</strong> {{ profile.primary_discipline }}</p>
+                            <p><strong>Mode Studi:</strong> {{ profile.study_mode }}</p>
+                        </div>
+                        <div class="right-column">
+                            <p><span class="icon-right"><i class="fas fa-phone-alt"></i></span>{{ profile.mobile_phone }}</p>
+                            <p><span class="icon-right"><i class="fas fa-envelope"></i></span>{{ profile.campus_email }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Company Details Section -->
+    <div class="company-container">
+        <h2>Company Details</h2>
+        {% if company_data %}
+        <div class="company-list">
+            {% for company in company_data %}
+            <div class="company-item">
+                <div class="left-column">
+                    <p><strong>Company Name:</strong> {{ company.company_name }}</p>
+                    <p><strong>Start Date:</strong> {{ company.start_date }}</p>
+                    <p><strong>Duration (Days):</strong> {{ company.duration_days }}</p>
+                    <p><strong>Supervisor Phone:</strong> {{ company.supervisor_phone }}</p>
+                </div>
+                <div class="right-column">
+                    <p><strong>Agency:</strong> {{ company.agency }}</p>
+                    <p><strong>End Date:</strong> {{ company.end_date }}</p>
+                    <p><strong>Supervisor Name:</strong> {{ company.supervisor_name }}</p>
+                    <p><strong>Supervisor Email:</strong> {{ company.supervisor_email }}</p>
+                </div>
+            </div>
+            
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>No company data available.</p>
+        {% endif %}
+    </div>
+  </div>
+
+
+
+{% endblock %}
